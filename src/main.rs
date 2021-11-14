@@ -70,6 +70,7 @@ async fn main() {
     // Utils
     options.command(commands::util::ping(), |f| f.category("Util"));
     options.command(commands::util::register_commands(), |f| f.category("Util"));
+    options.command(commands::util::about(), |f| f.category("Util"));
 
     let osu_client = Osu::new(config.osu.client_id, &config.osu.client_secret.clone())
         .await.expect("failed to set up osu! client");

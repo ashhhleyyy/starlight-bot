@@ -36,6 +36,7 @@
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/serde_derive-f0963e1389c37cf9/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/serde_json-088b9765961c6318/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/serenity-46cb0a5e46c19aef/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/starlight-bot-16634f36cc531c40/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/syn-26e4217de1d99b6d/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/tokio-eae805b47a29bf83/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/typenum-8ec5e91659fb3b61/out" isTestSource="false" />
