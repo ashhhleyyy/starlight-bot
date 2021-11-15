@@ -10,7 +10,9 @@ pub async fn iss(context: Context<'_>) -> Result<(), Error> {
         e.title("Current ISS location");
         e.field("Latitude", &location.lat, true);
         e.field("Longitude", &location.long, true);
-        e.image(location.get_mapbox_url(&context.data().config.mapbox.token));
+        if let Some(mapbox) = &context.data().config.mapbox {
+            e.image(location.get_mapbox_url(&mapbox.token));
+        }
         e.colour(BLURPLE);
         e
     })).await?;

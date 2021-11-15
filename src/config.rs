@@ -5,7 +5,7 @@ use serde::Deserialize;
 pub struct StarlightConfig {
     pub discord: DiscordConfig,
     pub osu: OsuConfig,
-    pub mapbox: MapboxConfig,
+    pub mapbox: Option<MapboxConfig>,
 }
 
 #[derive(Deserialize, Clone)]
