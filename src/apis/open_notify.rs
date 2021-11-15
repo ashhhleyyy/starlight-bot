@@ -2,7 +2,7 @@ use serde::Deserialize;
 use crate::Error;
 use crate::util::USER_AGENT;
 
-const ISS_LOCATION_ENDPOINT: &str = "http://api.open-notify.org/iss-now.json";
+const ISS_LOCATION_ENDPOINT: &str = "https://api.open-notify.org/iss-now.json";
 
 #[derive(Deserialize)]
 pub struct IssPosition {
