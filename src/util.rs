@@ -9,3 +9,11 @@ pub const USER_AGENT: &str = concat!(
     env!("CARGO_PKG_VERSION"),
     " (https://ashisbored.github.io)",
 );
+
+#[derive(Debug, thiserror::Error)]
+pub enum StarlightError {
+    #[error("not found")]
+    NotFound,
+    #[error("unknown server")]
+    UnknownServer,
+}

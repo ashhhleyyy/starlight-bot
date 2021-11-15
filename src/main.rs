@@ -4,6 +4,7 @@ extern crate tracing;
 use poise::serenity_prelude as serenity;
 use rosu_v2::Osu;
 use tracing_subscriber::FmtSubscriber;
+use crate::apis::nucleoid::NucleoidClient;
 use crate::apis::open_notify::OpenNotifyClient;
 
 use crate::config::StarlightConfig;
@@ -18,6 +19,7 @@ pub struct Data {
     pub config: StarlightConfig,
     pub osu_client: Osu,
     pub open_notify_client: OpenNotifyClient,
+    pub nucleoid_client: NucleoidClient,
 }
 
 type Error = Box<dyn std::error::Error + Send + Sync>;
@@ -58,6 +60,9 @@ async fn main() {
     // Fun
     options.command(commands::fun::iss(), |f| f.category("Fun"));
 
+    // Nucleoid
+    options.command(commands::nucleoid::nucleoid_status(), |f| f.category("Nucleoid"));
+
     // osu!
     options.command(commands::osu::osu_stats(), |f| f.category("osu!")
         .subcommand(commands::osu::osu_stats_catch(), |f| f)
@@ -76,6 +81,7 @@ async fn main() {
     let osu_client = Osu::new(config.osu.client_id, &config.osu.client_secret.clone())
         .await.expect("failed to set up osu! client");
     let open_notify_client = OpenNotifyClient::default();
+    let nucleoid_client = NucleoidClient::default();
 
     poise::Framework::<Data, Error>::build()
         .token(&config.discord.token)
@@ -85,6 +91,7 @@ async fn main() {
                 config: config.clone(),
                 osu_client,
                 open_notify_client,
+                nucleoid_client,
             })
         }))
         .options(options)

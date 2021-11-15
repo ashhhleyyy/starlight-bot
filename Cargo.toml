@@ -27,3 +27,8 @@ poise = { git = "https://github.com/kangalioo/poise", branch = "develop", featur
 
 # osu
 rosu-v2 = "0.3"
+
+# utils
+uuid = { version = "0.8", features = ["serde"] }
+thiserror = "1"
+chrono = "0.4"
