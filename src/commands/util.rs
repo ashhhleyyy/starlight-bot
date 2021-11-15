@@ -43,7 +43,7 @@ pub async fn about(context: Context<'_>) -> Result<(), Error> {
     context.send(|m| m.embed(|e| {
         e.title("Starlight");
         e.description("Starlight is a general purpose Discord bot featuring commands for fun, games and other random things!");
-        e.field("Latest changes:", GIT_LOG, false);
+        e.field("Latest changes:", GIT_LOG.replace("\\n", "\n"), false);
         e.footer(|f| {
             f.text(format!("Starlight {} ({}) | Created with ❤️ by Ash!", VERSION, GIT_BUILD_HASH));
             f
