@@ -27,7 +27,8 @@ async fn on_error(error: Error, ctx: poise::ErrorContext<'_, Data, Error>) {
     match ctx {
         poise::ErrorContext::Setup => panic!("Failed to start bot: {:?}", error),
         poise::ErrorContext::Command(ctx) => {
-            println!("Error in command `{}`: {:?}", ctx.command().name(), error)
+            println!("Error in command `{}`: {:?}", ctx.command().name(), error);
+            let _ = ctx.ctx().say(":warning: Sorry, an error occurred handling the command!").await;
         }
         _ => println!("Other error: {:?}", error),
     }
