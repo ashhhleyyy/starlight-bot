@@ -1,5 +1,6 @@
 use crate::{Context, Error};
 use poise::serenity_prelude as serenity;
+use poise::serenity_prelude::ButtonStyle;
 use crate::util::{GIT_BUILD_HASH, GIT_LOG, VERSION};
 
 /// Send the current shard latency.
@@ -43,12 +44,18 @@ pub async fn about(context: Context<'_>) -> Result<(), Error> {
     context.send(|m| m.embed(|e| {
         e.title("Starlight");
         e.description("Starlight is a general purpose Discord bot featuring commands for fun, games and other random things!");
+        e.field("Open source <3", "Starlight is open-source and licensed under the Mozilla Public License 2.0!", false);
         e.field("Latest changes:", GIT_LOG.replace("\\n", "\n"), false);
         e.footer(|f| {
             f.text(format!("Starlight {} ({}) | Created with ❤️ by Ash!", VERSION, GIT_BUILD_HASH));
             f
         });
         e
-    })).await?;
+    }).components(|c| c.create_action_row(|row| row.create_button(|b| {
+        b.url("https://github.com/ashisbored/starlight-bot");
+        b.label("Source code!");
+        b.style(ButtonStyle::Link);
+        b
+    })))).await?;
     Ok(())
 }
