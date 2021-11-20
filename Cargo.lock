@@ -103,6 +103,9 @@ name = "cc"
 version = "1.0.72"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "22a9137b95ea06864e018375b72adfb7db6e6f68cfc8df5a04d00288050485ee"
+dependencies = [
+ "jobserver",
+]
 
 [[package]]
 name = "cfg-if"
@@ -390,6 +393,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "git2"
+version = "0.13.24"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "845e007a28f1fcac035715988a234e8ec5458fd825b20a20c7dec74237ef341f"
+dependencies = [
+ "bitflags",
+ "libc",
+ "libgit2-sys",
+ "log",
+ "openssl-probe",
+ "openssl-sys",
+ "url",
+]
+
+[[package]]
 name = "h2"
 version = "0.3.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -560,6 +578,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b71991ff56294aa922b450139ee08b3bfc70982c6b2c7562771375cf73542dd4"
 
 [[package]]
+name = "jobserver"
+version = "0.1.24"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "af25a77299a7f711a01975c35a6a424eb6862092cc2d6c72c4ed6cbc56dfc1fa"
+dependencies = [
+ "libc",
+]
+
+[[package]]
 name = "js-sys"
 version = "0.3.55"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -579,6 +606,46 @@ name = "libc"
 version = "0.2.107"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fbe5e23404da5b4f555ef85ebed98fb4083e55a00c317800bc2a50ede9f3d219"
+
+[[package]]
+name = "libgit2-sys"
+version = "0.12.25+1.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8f68169ef08d6519b2fe133ecc637408d933c0174b23b80bb2f79828966fbaab"
+dependencies = [
+ "cc",
+ "libc",
+ "libssh2-sys",
+ "libz-sys",
+ "openssl-sys",
+ "pkg-config",
+]
+
+[[package]]
+name = "libssh2-sys"
+version = "0.2.23"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b094a36eb4b8b8c8a7b4b8ae43b2944502be3e59cd87687595cf6b0a71b3f4ca"
+dependencies = [
+ "cc",
+ "libc",
+ "libz-sys",
+ "openssl-sys",
+ "pkg-config",
+ "vcpkg",
+]
+
+[[package]]
+name = "libz-sys"
+version = "1.1.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "de5435b8549c16d423ed0c03dbaafe57cf6c3344744f1242520d59c9d8ecec66"
+dependencies = [
+ "cc",
+ "libc",
+ "pkg-config",
+ "vcpkg",
+]
 
 [[package]]
 name = "lock_api"
@@ -1264,6 +1331,7 @@ name = "starlight-bot"
 version = "0.1.0"
 dependencies = [
  "chrono",
+ "git2",
  "poise",
  "reqwest",
  "rosu-v2",

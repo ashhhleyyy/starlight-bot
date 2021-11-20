@@ -32,3 +32,6 @@ rosu-v2 = "0.3"
 uuid = { version = "0.8", features = ["serde"] }
 thiserror = "1"
 chrono = "0.4"
+
+[build-dependencies]
+git2 = "0.13"

@@ -41,6 +41,14 @@
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/tokio-eae805b47a29bf83/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/typenum-8ec5e91659fb3b61/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/unicase-beac44db424e37ec/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/libgit2-sys-6b43aaa7bcf2f2da/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/libssh2-sys-f6e45abc49badc7f/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/libz-sys-700af4c56c75899c/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/native-tls-5c019c96ada8980b/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/openssl-590ea42f2941a0be/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/openssl-sys-bb035268a49c7ef0/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/ring-db27afc2d0f95d77/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/starlight-bot-dae350e5d08b13b5/out" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
