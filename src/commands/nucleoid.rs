@@ -46,10 +46,10 @@ pub async fn nucleoid_status(
     context.send(|m| m.embed(|e| {
         e.title(format!("Nucleoid {} status", server.as_str()));
         e.description(format!("Join at `{}` using Minecraft `{}`", status.server_ip, status.game_version));
-        if status.games.len() > 0 {
+        if !status.games.is_empty() {
             e.field("Games open:", status.games.len(), true);
         }
-        if status.players.len() > 0 {
+        if !status.players.is_empty() {
             e.field("Players online", status.players.len(), true);
         }
         e.timestamp(Utc::now());
