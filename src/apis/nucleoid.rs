@@ -1,3 +1,4 @@
+use chrono::{DateTime, Utc};
 use serde::Deserialize;
 use crate::Error;
 use crate::util::{StarlightError, USER_AGENT};
@@ -18,6 +19,13 @@ impl NucleoidClient {
         } else {
             Ok(res.json().await?)
         }
+    }
+
+    pub async fn get_recent_games(&self, limit: u32) -> Result<Vec<RecentGame>, Error> {
+        let res = self.client.get(format!("{}/games/recent?limit={}", NUCLEOID_API_BASE, limit))
+            .send().await?
+            .json().await?;
+        Ok(res)
     }
 }
 
@@ -53,4 +61,13 @@ pub struct GameStatus {
 pub struct StatusPlayer {
     pub name: String,
     pub id: uuid::Uuid,
+}
+
+#[derive(Deserialize)]
+pub struct RecentGame {
+    pub id: uuid::Uuid,
+    pub namespace: String,
+    pub players: Vec<uuid::Uuid>,
+    pub server: String,
+    pub date_played: DateTime<Utc>,
 }

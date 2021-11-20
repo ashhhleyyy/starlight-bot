@@ -61,7 +61,9 @@ async fn main() {
     options.command(commands::fun::iss(), |f| f.category("Fun"));
 
     // Nucleoid
-    options.command(commands::nucleoid::nucleoid_status(), |f| f.category("Nucleoid"));
+    options.command(commands::nucleoid::nucleoid(), |f| f.category("Nucleoid")
+        .subcommand(commands::nucleoid::nucleoid_status(), |f| f.category("Nucleoid"))
+        .subcommand(commands::nucleoid::nucleoid_recent_games(), |f| f.category("Nucleoid")));
 
     // osu!
     options.command(commands::osu::osu_stats(), |f| f.category("osu!")

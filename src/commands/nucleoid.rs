@@ -1,7 +1,7 @@
 use std::str::FromStr;
 use chrono::Utc;
 use crate::{Context, Error};
-use crate::util::StarlightError;
+use crate::util::{pluralise, StarlightError};
 
 pub enum NucleoidServer {
     Play,
@@ -29,8 +29,15 @@ impl NucleoidServer {
     }
 }
 
-/// Query the status of one of the Nucleoid servers.
+/// Commands for querying information from Nucleoid's public API
 #[poise::command(slash_command)]
+pub async fn nucleoid(context: Context<'_>) -> Result<(), Error> {
+    context.say("this is not an actual command").await?;
+    Ok(())
+}
+
+/// Query the status of one of the Nucleoid servers.
+#[poise::command(slash_command, rename = "status")]
 pub async fn nucleoid_status(
     context: Context<'_>,
     #[description = "The server to query information about. Either 'play' or 'build'."] server: NucleoidServer
@@ -44,6 +51,28 @@ pub async fn nucleoid_status(
         }
         if status.players.len() > 0 {
             e.field("Players online", status.players.len(), true);
+        }
+        e.timestamp(Utc::now());
+        e
+    })).await?;
+
+    Ok(())
+}
+
+/// List the 5 most recently played games on Nucleoid
+#[poise::command(slash_command, rename = "recent-games")]
+pub async fn nucleoid_recent_games(
+    context: Context<'_>,
+) -> Result<(), Error> {
+    let recent_games = context.data().nucleoid_client.get_recent_games(5).await?;
+    context.send(|m| m.embed(|e| {
+        e.title("Recent games:");
+        for game in recent_games {
+            e.field(game.namespace, format!(
+                "{}\nPlayed at: `{}` on `{}`",
+                pluralise(game.players.len(), "player", "players"),
+                game.date_played, game.server,
+            ), false);
         }
         e.timestamp(Utc::now());
         e

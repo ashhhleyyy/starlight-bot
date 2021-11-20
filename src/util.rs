@@ -17,3 +17,12 @@ pub enum StarlightError {
     #[error("unknown server")]
     UnknownServer,
 }
+
+#[inline]
+pub fn pluralise(amount: usize, singular: &str, plural: &str) -> String {
+    return if amount == 1 {
+        format!("`{}` {}", amount, singular)
+    } else {
+        format!("`{}` {}", amount, plural)
+    }
+}
