@@ -31,8 +31,6 @@ fn main() {
         return format!("[`{}`] {}: {}", &id.to_string()[..7], commit.author().name().unwrap(), commit.summary().unwrap());
     }).take(5);
 
-    // let output = Command::new("git").args(&["log", "-5", "--pretty=format:[`%h`] %an: %s"]).output().unwrap();
-    // let latest_commits = String::from_utf8(output.stdout).unwrap();
     let latest_commits = revwalk.collect::<Vec<_>>().join("\n");
 
     println!("cargo:rustc-env=GIT_LOG={}", latest_commits.replace("\n", "\\n"));
